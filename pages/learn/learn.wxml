@@ -1,0 +1,92 @@
+<!--pages/learn/learn.wxml-->
+<view class="container">
+  <view class='head'>
+    <view bindtap='ssdanci'>
+      <icon class="weui-icon-search_in-box" type="search" size="33" style='margin-top:20rpx'></icon>
+    </view>
+
+    <view class='img'  bindtap='gotome'>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    </view>
+  </view>
+
+  <view id='body'>
+    <view class="weui-flex" style='margin-top:40rpx'>
+      <view class="weui-flex__item" style='display: flex;flex-direction: column;align-items: center;'>
+        <view class="placeholder" style='font-family: Chalkboard;'>剩余</view>
+        <!-- <view class="placeholder" style='font-size: 80rpx'>{{ineeddc}}</view> -->
+        <view class="placeholder" style='font-size: 80rpx' wx:if="{{ineeddc > 0}}"> {{ineeddc}} </view>
+      <view wx:else> 
+      <view wx:if="{{showszlv}}"> 请先选择旅途 </view>
+      <view wx:else>恭喜到达终点，请重新设置旅途</view>
+      </view>
+      </view>
+      <view class="weui-flex__item" style='display: flex;flex-direction: column; align-items: center;'>
+        <view class="placeholder" style='margin：40rpx'>学习</view>
+        <view class="placeholder" style='font-size: 80rpx'>{{alldc}}</view>
+      </view>
+    </view>
+    
+    <view class='line-css'>
+    </view>
+    <view class="weui-flex" style='margin-left: 10rpx;font-size: 30rpx'>
+      <view class="weui-flex__item" bindtap='goctlist'>
+        <view class="placeholder" style='display: flex;flex-direction: column;align-items: center;border: 2rpx solid #353535;border-radius: 10rpx;margin-left: 10rpx;'>错误单词</view>
+      </view>
+      <view class="weui-flex__item" bindtap='gozlist'>
+        <view class="placeholder" style='display: flex;flex-direction: column;align-items: center;border: 2rpx solid #353535;border-radius: 10rpx;margin-left: 10rpx;'>已掌握单词</view>
+      </view>
+      <view class="weui-flex__item" bindtap='gosclist'>
+        <view class="placeholder" style='display: flex;flex-direction: column;align-items: center;border: 2rpx solid #353535;border-radius: 10rpx;margin-left: 10rpx;margin-right: 10rpx;'>收藏单词</view>
+      </view>
+    </view>
+    <view class="weui-flex" id='jdt'>
+      <view>
+        <view class="placeholder">
+          <view class="weui-flex__item" style='display: flex;flex-direction: column;align-items: center;border: 2rpx solid #353535;border-radius: 10rpx'>
+            <view class="placeholder" style='margin：20rpx;font-family: Chalkboard;font-size:12px'>出发点</view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__bd" style='font-size:12px'>
+                    <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{accounts}}">
+                        <view class="weui-select">{{accounts[accountIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-flex__item" style='margin: 10rpx;'>
+        <progress style='width' percent="{{jdt}}" active stroke-width="12" />
+        <view style=' display: flex;  flex-direction: row;  justify-content: center; margin-top:10px '>
+        <button class="weui-btn mini-btn" type="primary" size="mini" bindtap='qrlt' >确认旅途</button>
+        </view>
+      </view>
+      <view>
+        <view class="placeholder">
+          <view class="weui-flex__item" style='display: flex;flex-direction: column;align-items: center;border: 2rpx solid #353535;border-radius: 10rpx; '>
+            <view class="placeholder" style='margin：20rpx;font-family: Chalkboard;font-size:12px'>目的地</view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__bd" style='font-size:12px'>
+                    <picker bindchange="bindAccountChangeto" value="{{accountIndexto}}" range="{{accountsto}}">
+                        <view class="weui-select">{{accountsto[accountIndexto]}}</view>
+                    </picker>
+                </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+
+
+
+
+
+  <view class="button-miss" catchtap="godanci">
+    <text class="word-miss">开始背单词吧</text>
+  </view>
+
+
+</view>
